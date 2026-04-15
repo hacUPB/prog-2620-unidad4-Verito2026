@@ -1,66 +1,158 @@
-# Lista principal
-aeronaves = []    #Creamos una lista vacía en la que se almacenarán todas las aeronaves
+# Lista principal donde se almacenan todas las aeronaves
+Aeronaves = []
 
-contador = 0
+# Mensaje inicial del sistema
+print(" SISTEMA DE MANTENIMIENTO AERONÁUTICO ")
 
-
-# Para registrar una aeronave:
+# Hacemos un bucle infinito para que el menú se repita hasta que el usuario decida salir
 while True:
     
-    print(f"\nAeronave {contador + 1}")         #Imprime la palabra aeronave junto al número de aeronave que se está registrando
+    # Mostrar las opciones disponibles al usuario
+    print("\n--- MENÚ ---")
+    print("1. Registrar aeronave")
+    print("2. Registrar componente")
+    print("3. Modificar aeronave")
+    print("4. Ver reporte de mantenimiento")
+    print("5. Salir")  
+
+    # Pedir al usuario que seleccione una opción
+    opcion = input("¿Que opción deseas elegir?: ")
+
     
-    #Pedimos la información de la aeronave al usuario
-    matricula = input("Por favor ingrese la matricula de la aeronave: ")
-    modelo = input("Por favor ingrese el modelo de la aeronave: ")
-    horas_vuelo = float(input("Por favor ingrese las horas de vuelo: "))
-    
-    #La información se almacena en un diccionario llamado aeronave
-    aeronave = {
-        "matricula": matricula,
-        "modelo": modelo,
-        "horas_vuelo": horas_vuelo,
-        "componentes": []      #Se crea una lista vacía para que posteriormente pidamos los datos que se alacenarán aquí
-    }
-    
-    #Pedimos los datos que se almacenarán el la lista componentes
-    cantidad_componentes = int(input("Número de componentes: "))    #Le pedimos al usuario que ingrese el numero de componentes que desea registrar
-    
-    for i in range(cantidad_componentes):                           #Bucle for que se repite de acuerdo a la cantidad de componentes que el usuario ingrese
-        print(f"\nComponente {i + 1}")
+    # Si el usuario elige 1,registrar una nueva aeronave
+    if opcion == "1":
         
-        #Pedimos que ingrese la información de los componentes
-        nombre = input("Por favor ingrese el nombre del componente: ")
-        horas_uso = float(input("Por favor ingrese las horas de uso del componente: "))
-        limite = float(input("Por favor ingrese el límite de horas: "))
-        #Esos datos se alacenan en el diccionario componente
-        componente = {
-            "nombre": nombre,
-            "horas_uso": horas_uso,
-            "limite": limite
+        # Solicitamos los datos al usuario
+        matricula = input("Por favor ingrese la matricula:")
+        modelo = input("Por favor ingrese el modelo:")
+        horas_vuelo = float(input("Por favor ingrese las horas de vuelo:"))
+        
+        # Creamos un diccionario para guardar esta información
+        aeronave = {
+            "matricula": matricula,
+            "modelo": modelo,
+            "horas_vuelo": horas_vuelo,
+            "componentes": []  # Lista vacía donde se guardarán los componentes
         }
-        #Ese diccionario  se almacenará en la lista vacía componentes
-        aeronave["componentes"].append(componente)
-    
-    #Se guarda la aeronave en la lista principal
-    aeronaves.append(aeronave)
 
-    #Termina un ciclo entonces se le suma uno
-    contador += 1
-    
-    # Mínimo se deben ingresar tres aeronaves, entonces...
-    if contador >= 3:
-        opcion = input("\n¿Agregar otra aeronave? (si/no): ")
-        if opcion == "no":
-            break     #Estaba en un ciclo infinito while, break rompe con ese bucle
+        # Preguntamos cuántos componentes quiere agregar
+        num_componentes = int(input("¿Cuántos componentes desea registrar?: "))
+        
+        # Bucle for para que se repita la cantidad de veces que puso en la anterior pregunta
+        for i in range(num_componentes):
+            
+            # Mostrar número del componente actual
+            print("\nComponente", i + 1)
 
+            # Solicitar datos del componente
+            nombre = input("Ingrese el nombre del componente")
+            horas_uso = float(input("Ingrese las horas de uso"))
+            limite = float(input("Ingrese el limite de horas:"))
 
-#Para el reporte..
+            # Crear diccionario del componente
+            componente = {
+                "nombre": nombre,
+                "horas_uso": horas_uso,
+                "limite": limite
+            }
 
-print("\nREPORTE DE MANTENIMIENTO")
+            # Agregar el diccionario del componente a la lista de componentes de la aeronave.
+            aeronave["componentes"].append(componente)
 
-for aeronave in aeronaves:     #Recorre toda la lista de aeronaves
-    print("\nAeronave:", aeronave["matricula"])    #Accede al valor de la clave matricula
-    
-    for componente in aeronave["componentes"]:    #Recorre la lista de componentes de la aeronave
-        if componente["horas_uso"] > componente["limite"]:   #Compara horas de uso con el límite
-            print("Mantenimiento:", componente["nombre"])    #Si las horas de uso son mayores a la limite imprime esto
+        # Agregamos toda la info de la aeronave a la lista principal
+        Aeronaves.append(aeronave)
+
+        # Confirmación al usuario
+        print("Hemos registrado tu aeronave correctamente")
+
+    # Si el usuario elige 2,registramos un componente
+    # Registrar un componente a una aeronave ya existente
+    elif opcion == "2":
+        
+        # Verificar que exista al menos una aeronave
+        if len(Aeronaves)==0:
+            print("No hay ninguna aeronave registrada")
+        else:
+            # Pedir matrícula para identificar la aeronave
+            matricula = input("Ingrese la matrícula: ")
+
+            # Buscar la aeronave en la lista
+            for a in Aeronaves:
+                if a["matricula"] == matricula:
+                    
+                    # Solicitar datos del nuevo componente
+                    nombre = input("Nombre del componente: ")
+                    horas = float(input("Horas de uso: "))
+                    limite = float(input("Límite: "))
+
+                    # Crear el componente
+                    comp = {
+                        "nombre": nombre,
+                        "horas_uso": horas,
+                        "limite": limite
+                    }
+
+                    # Agregar componente a la aeronave encontrada
+                    a["componentes"].append(comp)
+
+                    print("Componente agregado")
+                    break  # Termina la búsqueda
+
+            else:
+                # Se ejecuta si no se encontró la aeronave
+                print("Aeronave no encontrada")
+
+    # Si el usuario elige opción 3
+    # Modificar los datos de una aeronave existente
+    elif opcion == "3":
+        
+        # Validar que haya por lo menos una aeronave
+        if len(Aeronaves)==0:
+            print("No hay ninguna aeronave registrada")
+        else:
+            # Pedir matrícula de la aeronave a modificar
+            matricula = input("Ingrese la matricula de la aeronave que quiere modificar")
+
+            # Buscar la aeronave
+            for a in Aeronaves:
+                if a["matricula"] == matricula:
+                    
+                    # Reemplazar datos
+                    a["matricula"] = input("Nueva matrícula: ")
+                    a["modelo"] = input("Nuevo modelo: ")
+                    a["horas_vuelo"] = float(input("Nuevas horas de vuelo: "))
+
+                    print("Aeronave modificada")
+                    break
+
+            else:
+                print("Lo sentimos, no encontramos esta aeronave")
+
+    # Si el usuario elige la opción 4
+    # Mostrar reporte de componentes que necesitan mantenimiento
+    elif opcion == "4":
+        
+        # Validar que existan aeronaves
+        if len(Aeronaves) == 0:
+            print("No hay aeronaves registradas")
+        else:
+            print("\nComponentes que necesitan mantenimiento:")
+
+    for aeronave in Aeronaves:
+        print("\nAeronave:", aeronave["matricula"])
+
+        for componente in aeronave["componentes"]:
+            if componente["horas_uso"] >= componente["limite"]:
+                print("Debe hacer mantenimiento a este componente:", componente["nombre"])
+                        
+           
+
+    # ---------------- OPCIÓN 5 ----------------
+    # Salir del programa
+            elif opcion == "5":
+                print("Saliendo del sistema...")
+    break  # Rompe el while y termina el programa
+
+    # ---------------- OPCIÓN INVÁLIDA ----------------
+else:
+        print("Opción inválida")
