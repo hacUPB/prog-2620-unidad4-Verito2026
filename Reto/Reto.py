@@ -36,10 +36,10 @@ while True:
         }
 
         # Preguntamos cuántos componentes quiere agregar
-        num_componentes = int(input("¿Cuántos componentes desea registrar?: "))
+        numero_componentes = int(input("¿Cuántos componentes desea registrar?: "))
         
         # Bucle for para que se repita la cantidad de veces que puso en la anterior pregunta
-        for i in range(num_componentes):
+        for i in range(numero_componentes):
             
             # Mostrar número del componente actual
             print("\nComponente", i + 1)
@@ -60,7 +60,7 @@ while True:
             aeronave["componentes"].append(componente)      #Accede a la lista "componentes" y despues agrega el diccionario "componente" 
 
         # Agregamos toda la info de la aeronave a la lista principal
-        Aeronaves.append(aeronave) #Accede a la lista principal y añade al final la aeronave.
+        Aeronaves.append(aeronave) #Accede a la lista principal y añade al final la aeronave(diccionario).
 
         # Confirmación al usuario
         print("Hemos registrado tu aeronave correctamente")
@@ -73,10 +73,10 @@ while True:
             print("No hay ninguna aeronave registrada")
         else:
             # Pedir matrícula para identificar la aeronave
-            matricula = input("Ingrese la matrícula: ")
+            matricula = input("Ingrese la matrícula:")
 
             # Buscar la aeronave en la lista
-            for aeronave in Aeronaves:
+            for aeronave in Aeronaves:               #Recorro todos los elementos de la lista principal,siendo aeronave cada diccionario y Aeronaves la lista principal
                 if aeronave["matricula"] == matricula:
                     
                     # Solicitar datos del nuevo componente
@@ -85,34 +85,33 @@ while True:
                     limite = float(input("Límite: "))
 
                     # Crear el componente
-                    comp = {
+                    nuevo = {
                         "nombre": nombre,
                         "horas_uso": horas,
                         "limite": limite
                     }
 
                     # Agregar componente a la aeronave encontrada
-                    aeronave["componentes"].append(comp)
+                    aeronave["componentes"].append(nuevo)
 
-                    print("Componente agregado")
+                    print("Hemos agregado tu componente")
                     break  # Termina la búsqueda
 
             else:
-                # Se ejecuta si no se encontró la aeronave
+                # Si no encontramos la aeronave etonces...
                 print("Aeronave no encontrada")
 
-    # Si el usuario elige opción 3
-    # Modificar los datos de una aeronave existente
+    # Si el usuario elige opción 3,modificamos los datos de una aeronave existente
     elif opcion == "3":
         
-        # Validar que haya por lo menos una aeronave
+        # Validar que hay por lo menos una aeronave
         if len(Aeronaves)==0:
             print("No hay ninguna aeronave registrada")
         else:
             # Pedir matrícula de la aeronave a modificar
             matricula = input("Ingrese la matricula de la aeronave que quiere modificar")
 
-            # Buscar la aeronave
+            # Buscamos la aeronave
             for aeronave in Aeronaves:       #Recorre cada aeronave de la lista de Aeronaves
                 if aeronave["matricula"] == matricula:
                     
@@ -124,8 +123,8 @@ while True:
                     print("Aeronave modificada")
                     break
 
-            else:
-                print("Lo sentimos, no encontramos esta aeronave")
+                else:
+                    print("Lo sentimos, no encontramos esta aeronave")
 
     # Si el usuario elige la opción 4
     # Mostrar reporte de componentes que necesitan mantenimiento
