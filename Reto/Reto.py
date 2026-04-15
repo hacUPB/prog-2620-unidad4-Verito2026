@@ -4,7 +4,7 @@ Aeronaves = []
 # Mensaje inicial del sistema
 print(" SISTEMA DE MANTENIMIENTO AERONÁUTICO ")
 
-# Hacemos un bucle infinito para que el menú se repita hasta que el usuario decida salir
+# Hacemos un bucle infinito para que el menú(o el programa) se repita hasta que el usuario decida salir
 while True:
     
     # Mostrar las opciones disponibles al usuario
@@ -45,8 +45,8 @@ while True:
             print("\nComponente", i + 1)
 
             # Solicitar datos del componente
-            nombre = input("Ingrese el nombre del componente")
-            horas_uso = float(input("Ingrese las horas de uso"))
+            nombre = input("Ingrese el nombre del componente:")
+            horas_uso = float(input("Ingrese las horas de uso:"))
             limite = float(input("Ingrese el limite de horas:"))
 
             # Crear diccionario del componente
@@ -56,29 +56,28 @@ while True:
                 "limite": limite
             }
 
-            # Agregar el diccionario del componente a la lista de componentes de la aeronave.
-            aeronave["componentes"].append(componente)
+            # Agregar el diccionario del componente al final de la lista de componentes de la aeronave.
+            aeronave["componentes"].append(componente)      #Accede a la lista "componentes" y despues agrega el diccionario "componente" 
 
         # Agregamos toda la info de la aeronave a la lista principal
-        Aeronaves.append(aeronave)
+        Aeronaves.append(aeronave) #Accede a la lista principal y añade al final la aeronave.
 
         # Confirmación al usuario
         print("Hemos registrado tu aeronave correctamente")
 
-    # Si el usuario elige 2,registramos un componente
-    # Registrar un componente a una aeronave ya existente
+    # Si el usuario elige 2,registramos un componente,registramos un componente a una aeronave que ya existe
     elif opcion == "2":
         
         # Verificar que exista al menos una aeronave
-        if len(Aeronaves)==0:
+        if len(Aeronaves)==0:   #Si la cantidad de aeronaves es cero...
             print("No hay ninguna aeronave registrada")
         else:
             # Pedir matrícula para identificar la aeronave
             matricula = input("Ingrese la matrícula: ")
 
             # Buscar la aeronave en la lista
-            for a in Aeronaves:
-                if a["matricula"] == matricula:
+            for aeronave in Aeronaves:
+                if aeronave["matricula"] == matricula:
                     
                     # Solicitar datos del nuevo componente
                     nombre = input("Nombre del componente: ")
@@ -93,7 +92,7 @@ while True:
                     }
 
                     # Agregar componente a la aeronave encontrada
-                    a["componentes"].append(comp)
+                    aeronave["componentes"].append(comp)
 
                     print("Componente agregado")
                     break  # Termina la búsqueda
@@ -114,13 +113,13 @@ while True:
             matricula = input("Ingrese la matricula de la aeronave que quiere modificar")
 
             # Buscar la aeronave
-            for a in Aeronaves:
-                if a["matricula"] == matricula:
+            for aeronave in Aeronaves:       #Recorre cada aeronave de la lista de Aeronaves
+                if aeronave["matricula"] == matricula:
                     
-                    # Reemplazar datos
-                    a["matricula"] = input("Nueva matrícula: ")
-                    a["modelo"] = input("Nuevo modelo: ")
-                    a["horas_vuelo"] = float(input("Nuevas horas de vuelo: "))
+                    # Reemplazamos los datos
+                    aeronave["matricula"] = input("Nueva matrícula: ")
+                    aeronave["modelo"] = input("Nuevo modelo: ")
+                    aeronave["horas_vuelo"] = float(input("Nuevas horas de vuelo: "))
 
                     print("Aeronave modificada")
                     break
@@ -147,8 +146,7 @@ while True:
                         
            
 
-    # ---------------- OPCIÓN 5 ----------------
-    # Salir del programa
+    # Si el usuario elige la opción 5,salir del programa
             elif opcion == "5":
                 print("Saliendo del sistema...")
     break  # Rompe el while y termina el programa
