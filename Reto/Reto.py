@@ -105,7 +105,7 @@ while True:
     elif opcion == "3":
         
         # Validar que hay por lo menos una aeronave
-        if len(Aeronaves)==0:
+        if len(Aeronaves)==0:       
             print("No hay ninguna aeronave registrada")
         else:
             # Pedir matrícula de la aeronave a modificar
@@ -136,20 +136,20 @@ while True:
         else:
             print("\nComponentes que necesitan mantenimiento:")
 
-    for aeronave in Aeronaves:
-        print("\nAeronave:", aeronave["matricula"])
+            for aeronave in Aeronaves:
+                print("\nAeronave:", aeronave["matricula"])
 
-        for componente in aeronave["componentes"]:
-            if componente["horas_uso"] >= componente["limite"]:
-                print("Debe hacer mantenimiento a este componente:", componente["nombre"])
+                for componente in aeronave["componentes"]:
+                    if componente["horas_uso"] >= componente["limite"]:
+                        print("Debe hacer mantenimiento a este componente:", componente["nombre"])
                         
            
 
     # Si el usuario elige la opción 5,salir del programa
-            elif opcion == "5":
+    elif opcion == "5":
                 print("Saliendo del sistema...")
     break  # Rompe el while y termina el programa
 
     # ---------------- OPCIÓN INVÁLIDA ----------------
 else:
-        print("Opción inválida")
+        print("Esta opción no es valida")
