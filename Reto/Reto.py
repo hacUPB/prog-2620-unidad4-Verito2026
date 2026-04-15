@@ -14,6 +14,7 @@ while True:
     print("3. Modificar aeronave")
     print("4. Ver reporte de mantenimiento")
     print("5. Salir")  
+    print("6. Modificar componente")
 
     # Pedir al usuario que seleccione una opción
     opcion = input("¿Que opción deseas elegir?: ")
@@ -123,8 +124,9 @@ while True:
                     print("Aeronave modificada")
                     break
 
-                else:
-                    print("Lo sentimos, no encontramos esta aeronave")
+            else:
+                print("Lo sentimos, no encontramos esta aeronave")
+
 
     # Si el usuario elige la opción 4
     # Mostrar reporte de componentes que necesitan mantenimiento
@@ -143,13 +145,39 @@ while True:
                     if componente["horas_uso"] >= componente["limite"]:
                         print("Debe hacer mantenimiento a este componente:", componente["nombre"])
                         
-           
+    elif opcion == "6":
+
+        if len(Aeronaves) == 0:
+            print("No hay aeronaves registradas")
+        else:
+            matricula = input("Matrícula: ")
+
+            for aeronave in Aeronaves:
+                if aeronave["matricula"] == matricula:
+
+                    nombre = input("Componente a modificar: ")
+
+                    for componente in aeronave["componentes"]:
+                        if componente["nombre"] == nombre:
+
+                            componente["nombre"] = input("Nuevo nombre: ")
+                            componente["horas_uso"] = float(input("Horas de uso: "))
+                            componente["limite"] = float(input("Límite: "))
+
+                            print("Componente modificado")
+                            break
+                else:
+                    print("Componente no encontrado")
+
+                    break
+            else:
+                print("Aeronave no encontrada")      
 
     # Si el usuario elige la opción 5,salir del programa
     elif opcion == "5":
-                print("Saliendo del sistema...")
-    break  # Rompe el while y termina el programa
+            print("Saliendo del sistema...")
+            break  # Rompe el while y termina el programa
 
-    # ---------------- OPCIÓN INVÁLIDA ----------------
+    # Si el usuario elige otra opcion que no está en el menú..
 else:
         print("Esta opción no es valida")
