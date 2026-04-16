@@ -95,7 +95,7 @@
 
 * **Nota Esperada (0.0 - 5.0):** 5.0
 * **Justificación:**
-    > *Nuestro programa permite que el usuario ingrese los datos de varias aeronaves, y los va almacenando.El usuario tiene la opcion de reistrar las aeronaves que el quiera, registrar nuevos componentes, modificar las aeronaves, o modificar componentes.Otra de las opciones es que permite hacer un reporte de los componentes de las aeronaves que necesitan mantenimiento, para ello muestra muestra la matricula de la aeronave junto con el componente que necesita mantenimiento.*
+    > *Nuestro programa permite que el usuario ingrese los datos de varias aeronaves, y los va almacenando.El usuario tiene la opcion de registrar las aeronaves que el quiera, registrar nuevos componentes, modificar las aeronaves, o modificar componentes.Otra de las opciones es que permite hacer un reporte de los componentes de las aeronaves que necesitan mantenimiento, para ello muestra  la matricula de la aeronave junto con el componente que necesita mantenimiento.*
 * **Evidencia:** 
 
 ![Imágen1](./Imágenes/Parte1.png)
@@ -107,8 +107,8 @@
 
 * **Nivel de Confianza (Bajo / Medio / Alto):** Medio
 * **Justificación:**
-    > *[Reflexionen como equipo: "¿Ambos entendemos cada línea del código? ¿Podemos explicar cómo funciona el ciclo principal sin mirar los apuntes?"]*
-* **Evidencia de preparación: Describan brevemente qué estrategia usaron para asegurar que ambos dominan el código (ej. "Nos turnamos para programar (Pair programming)", "Comentamos línea por línea el script final", etc.).**
+    > *Durante el desarrollo del programa fuimos entendiendo mejor cómo funcionan las listas y los diccionarios, y cómo nos ayudan a organizar la información de las aeronaves y sus componentes de forma clara. También nos dimos cuenta de que la indentación es clave, porque define el flujo del programa y si se usa mal puede cambiar completamente el resultado. Más que solo hacer que el código funcione, este proceso nos permitió entender lo que estábamos haciendo y por qué, lo que nos da más seguridad al momento de explicarlo.*
+* **Evidencia de preparación: Usamos una estrategia en la que revisamos el código juntos y fuimos explicando cada parte en voz alta, línea por línea, para asegurarnos de que ambos lo entendíamos. Además, nos turnamos en algunos momentos para escribir y para revisar, corrigiendo errores y probando el programa con diferentes datos, lo que nos ayudó a confirmar que los dos dominamos cómo funciona.**
 
 ### 📈 3. Cálculo de Nota Definitiva Esperada
 Multipliquen la nota asignada en cada criterio por su porcentaje respectivo y sumen los resultados para obtener su nota final esperada.
