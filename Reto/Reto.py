@@ -7,7 +7,7 @@ print(" SISTEMA DE MANTENIMIENTO AERONÁUTICO ")
 # Hacemos un bucle infinito para que el menú(o el programa) se repita hasta que el usuario decida salir
 while True:
     
-    # Mostrar las opciones disponibles al usuario
+    # Mostramos las opciones al usuario
     print("\n--- MENÚ ---")
     print("1. Registrar aeronave")
     print("2. Registrar componente")
@@ -63,7 +63,6 @@ while True:
         # Agregamos toda la info de la aeronave a la lista principal
         Aeronaves.append(aeronave) #Accede a la lista principal y añade al final la aeronave(diccionario).
 
-        # Confirmación al usuario
         print("Hemos registrado tu aeronave correctamente")
 
     # Si el usuario elige 2,registramos un componente,registramos un componente a una aeronave que ya existe
@@ -96,7 +95,7 @@ while True:
                     aeronave["componentes"].append(nuevo)
 
                     print("Hemos agregado tu componente")
-                    break  # Termina la búsqueda
+                    break  # Terminamos con esta parte
 
             else:
                 # Si no encontramos la aeronave etonces...
@@ -128,22 +127,22 @@ while True:
                 print("Lo sentimos, no encontramos esta aeronave")
 
 
-    # Si el usuario elige la opción 4
-    # Mostrar reporte de componentes que necesitan mantenimiento
+    # Si el usuario elige la opción 4,mostrar reporte de componentes que necesitan mantenimiento
     elif opcion == "4":
-        
-        # Validar que existan aeronaves
-        if len(Aeronaves) == 0:
-            print("No hay aeronaves registradas")
-        else:
-            print("\nComponentes que necesitan mantenimiento:")
+            # ¿Hay aeronaves?
+            if len(Aeronaves) == 0:
+                print("No hay aeronaves registradas")
+            else:
+                print("\nComponentes que necesitan mantenimiento:")
 
-            for aeronave in Aeronaves:
-                print("\nAeronave:", aeronave["matricula"])
-
-                for componente in aeronave["componentes"]:
-                    if componente["horas_uso"] >= componente["limite"]:
-                        print("Debe hacer mantenimiento a este componente:", componente["nombre"])
+                for aeronave in Aeronaves:
+                    for componente in aeronave["componentes"]:
+                
+                        if componente["horas_uso"] >= componente["limite"]:
+                            print("Aeronave:", aeronave["matricula"],
+                          "/ Componente:", componente["nombre"])
+    
+    #Si el usuario elige la opcion 6, modificamos un componente
                         
     elif opcion == "6":
 
