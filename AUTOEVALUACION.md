@@ -24,10 +24,11 @@
 
 * **Nota Esperada (0.0 - 5.0):** 4.0
 * **Justificación:** 
-  > *[Ejemplo de lo que debes escribir: "Consideramos que merecemos un 4.5 porque nuestro diagrama de bloques ilustra paso a paso cómo se piden los datos de las aeronaves y cómo se guardan en el diccionario principal. Sin embargo, omitimos detallar la validación de errores..."]*
-* **Evidencia:**
-  *
-  ![Diagrama de flujo](Inserta aquí la imagen de tu diagrama (ej. `![Diagrama de Flujo](./img/diagrama.png)`) y explica brevemente cómo se conecta con el código.*
+  > *Consideramos que merecemos un 4.0 porque el diagrama de flujo representa de forma clara el funcionamiento del programa, mostrando el paso a paso del menú, el registro de aeronaves y la gestión de componentes. Se entiende bien la lógica general y la relación entre las diferentes partes del sistema. Sin embargo, al ser un diagrama bastante extenso, algunas secciones pueden volverse un poco difíciles de seguir a primera vista. Para facilitar la comprensión del diagrama, utilizamos colores para diferenciar procesos, decisiones y flujos, lo que ayudó a organizar mejor la información. Esta estrategia fue clave porque el diagrama se extendió bastante y podía generar confusión, así que los colores nos permitieron hacerlo más claro y fácil de interpretar.El diagrama tambien lo anexamos afuera por su extension.
+
+
+
+  ![Diagrama de flujo](./Imágenes/Diagrama%20reto%20final.png) 
 
 ### Criterio 2: Uso de Estructuras (Listas y Diccionarios) (Valor: 30%)
 *Evalúa si se utilizaron diccionarios y listas de manera correcta y anidada para almacenar los datos ingresados por el usuario, sin redundancias.*
@@ -36,7 +37,7 @@
 * **Justificación:**
   > *Usamos una lista principal llamada Aeronaves, allí se guardaran distintos diccionarios que guradarán la información de cada aeronave.Cada aeronave tiene claves, hay una clave que es una lista que será utilizada para guardar los componentes.Finalmente cada componente se guarda dentro de un diccionario.*
 * **Evidencia:**
-  *Pega aquí el fragmento de código exacto donde inicializas y llenas estas estructuras. Usa el formato de código de Markdown:*
+  
   ```python
   #Primer ejemplo
    # Crear diccionario del componente
@@ -120,6 +121,6 @@ Multipliquen la nota asignada en cada criterio por su porcentaje respectivo y su
 |4. Funcionalidad	|5.0	|15% |(0.15)	|[Resultado]|
 |5. Sustentación (Estimado)|	4.0|	15%| (0.15)|	[Resultado]|
 
-NOTA FINAL ESPERADA		100%	[SUMA TOTAL]
+NOTA FINAL ESPERADA		100%	[4.65]
 
 ✨ ""La educación es para el carácter, no solo para la mente"." ✨
